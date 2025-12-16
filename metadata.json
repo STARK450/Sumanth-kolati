@@ -1,0 +1,5 @@
+{
+  "name": "Liquid Flow Animation",
+  "description": "A stunning liquid distortion effect using Three.js, demonstrated with a React component structure.",
+  "requestFramePermissions": []
+}
