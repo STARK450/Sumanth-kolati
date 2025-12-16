@@ -3,7 +3,7 @@ import DemoOne from './components/ui/demo';
 import { Button } from './components/ui/button';
 import { Switch } from './components/ui/switch';
 import { GoogleGenAI } from "@google/genai";
-import { Loader2, MessageSquare, Send, X, Info, Github, Twitter, Linkedin, ChevronDown, Settings2, ExternalLink, Mail, ArrowUpRight } from 'lucide-react';
+import { Loader2, MessageSquare, Send, X, Info, Github, Twitter, Linkedin, ChevronDown, Settings2, ExternalLink, Mail, ArrowUpRight, Briefcase } from 'lucide-react';
 import { cn } from './components/utils';
 
 // --- Types & Interfaces ---
@@ -256,6 +256,9 @@ const SocialLinks = () => (
     <div className="w-px h-16 bg-gradient-to-b from-transparent via-slate-500 to-transparent" />
     <a href="https://github.com/STARK450" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
       <Github className="w-5 h-5" />
+    </a>
+    <a href="https://www.naukri.com/mnjuser/profile" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+      <Briefcase className="w-5 h-5" />
     </a>
     <a href="mailto:sumanthstark450@gmail.com" className="text-slate-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
       <Mail className="w-5 h-5" />
@@ -569,6 +572,7 @@ export default function App() {
               <div className="flex gap-12">
                  <a href="https://github.com/STARK450" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Github</a>
                  <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">LinkedIn</a>
+                 <a href="https://www.naukri.com/mnjuser/profile" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Naukri</a>
                  <a href="mailto:sumanthstark450@gmail.com" className="hover:text-white transition-colors duration-300">Email</a>
               </div>
             </div>
