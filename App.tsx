@@ -57,7 +57,13 @@ const SKILLS = [
 // --- Components ---
 
 // 1. Reveal Animation Component
-const RevealOnScroll = ({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => {
+interface RevealOnScrollProps {
+  children?: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, className = "", delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -100,7 +106,7 @@ const RevealOnScroll = ({ children, className = "", delay = 0 }: { children: Rea
 // 2. Gemini AI Service
 const generateAIResponse = async (prompt: string): Promise<string> => {
   try {
-    const apiKey = process.env.API_KEY;
+    const apiKey = typeof process !== 'undefined' ? process.env?.API_KEY : undefined;
     if (!apiKey) {
       return "Error: API Key is missing. Please set the API_KEY environment variable.";
     }
@@ -120,10 +126,15 @@ const generateAIResponse = async (prompt: string): Promise<string> => {
       }
     });
 
-    return response.text || "No response generated.";
-  } catch (error) {
+    const text = response.text;
+    if (typeof text === 'string') return text;
+    if (text) return String(text);
+    return "No response generated.";
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    return "Sorry, I couldn't connect to the AI service at the moment.";
+    // Handle error object safely to avoid [object Object]
+    const errorMessage = error?.message || "Unknown error";
+    return `Sorry, I couldn't connect to the AI service. (${errorMessage})`;
   }
 };
 
