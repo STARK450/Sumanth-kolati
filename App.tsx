@@ -106,13 +106,31 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, className = "
 // 2. Gemini AI Service
 const generateAIResponse = async (prompt: string): Promise<string> => {
   try {
- // ✅ Vite-only environment access (frontend-safe)
-const apiKey = import.meta.env.VITE_API_KEY as string | undefined;
-
-if (!apiKey) {
-  return "System Error: API key missing. Configure VITE_API_KEY in Vercel.";
-}
-
+    // Robust API Key extraction for various environments (Vite, Next.js, Standard Env)
+    let apiKey: string | undefined = undefined;
+    
+    // Safely check standard process.env (Node/Webpack/Next.js server)
+    try {
+        if (typeof process !== 'undefined' && process.env) {
+          apiKey = process.env.API_KEY || process.env.NEXT_PUBLIC_API_KEY; 
+        }
+    } catch (e) {
+        // Ignore ReferenceError if process is not defined
+    }
+    
+    // Safely check import.meta.env (Vite)
+    try {
+        // @ts-ignore - import.meta might not be typed in all configurations
+        if (!apiKey && typeof import.meta !== 'undefined' && import.meta.env) {
+          // @ts-ignore
+          apiKey = import.meta.env.VITE_API_KEY;
+        }
+    } catch (e) {
+        // Ignore ReferenceError if import.meta is not defined
+    }
+    
+    if (!apiKey) {
+      return "System Error: API Key is missing. Please set VITE_API_KEY (Vite) or NEXT_PUBLIC_API_KEY (Next.js) in your environment variables.";
     }
 
     const ai = new GoogleGenAI({ apiKey });
