@@ -1,3 +1,4 @@
+
 {
   "name": "sumanth-kolati-portfolio",
   "private": true,
@@ -13,7 +14,8 @@
     "react-dom": "^19.0.0",
     "lucide-react": "^0.475.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "@google/genai": "^0.21.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
