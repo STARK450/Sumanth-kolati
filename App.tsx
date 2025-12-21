@@ -108,22 +108,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 px-8 py-6 flex justify-between items-center pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-40 px-5 py-4 md:px-10 md:py-6 flex justify-between items-center pointer-events-none">
       <div 
-        className="pointer-events-auto cursor-pointer group" 
+        className="pointer-events-auto cursor-pointer group flex-shrink-0" 
         onClick={(e) => scrollToSection(e, 'home')}
       >
-        <span className="text-lg font-bold text-slate-100 tracking-tighter transition-opacity duration-500 opacity-80 group-hover:opacity-100 drop-shadow-md" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <span className="text-base md:text-lg font-bold text-slate-100 tracking-tighter transition-opacity duration-500 opacity-80 group-hover:opacity-100 drop-shadow-md" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           SK<span className="text-emerald-400">.</span>
         </span>
       </div>
-      <div className="pointer-events-auto bg-slate-950/50 backdrop-blur-xl px-8 py-4 rounded-full border border-white/5 flex gap-8 shadow-xl shadow-black/20 transition-all duration-500 hover:bg-slate-950/70">
+      <div className="pointer-events-auto bg-slate-950/40 backdrop-blur-xl px-4 py-2 md:px-6 md:py-2.5 rounded-full border border-white/10 flex gap-4 md:gap-8 shadow-xl shadow-black/20 transition-all duration-500 hover:bg-slate-950/60 ml-4">
         {['Work', 'About', 'Contact'].map((item) => (
           <a 
             key={item} 
             href={`#${item.toLowerCase()}`}
             onClick={(e) => scrollToSection(e, item.toLowerCase())}
-            className="text-[10px] font-bold text-slate-400 hover:text-white transition-colors duration-300 uppercase tracking-[0.2em] cursor-pointer"
+            className="text-[9px] md:text-[10px] font-semibold text-slate-400 hover:text-white transition-colors duration-300 uppercase tracking-[0.15em] cursor-pointer"
           >
             {item}
           </a>
